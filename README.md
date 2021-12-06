@@ -7,7 +7,7 @@ Simulation of the LHe3 detector using Geant4, to study the energy deposition in 
  - Generators: a particle (`G4ParticleTable`) or a radioactive isotope (`G4IonTable`) from a defined list
  - Energy deposition in the LHe3 detector volume
 
- - Output: Root ntuple (`| PDG ID | Total energy deposition |`)
+ - Output: Root ntuple (`| Event number | Track number | PDG ID | Total energy deposition [MeV] | Track length [mm] |`)
 
  - Configuration from command line arguments
 

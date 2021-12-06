@@ -19,7 +19,6 @@ static void show_usage()
             << "Options:\n"
 	    << "\t-p,--particle\t\tName of the particle source <gamma|Ac228|Bi214|Co60|Cs137|K40|Mn54|Pb210|Pb212|Pb214|Ra226|Th234|Tl208|U235>\n"
 	    << "\t-e,--energy\t\tEnergy for a gamma source [keV]\n"
-	    << "\t-v,--volume\t\tGenerator volume <Concrete|Air|Dewer|SI1|Insulation|Nitrogen|Wall1|SI2|Wall2|SI3|Wall3|LHe4|VacuumCan|RadShield|Shell|Lhe3|Cell|Lhe3detector>\n"
 	    << "\t-n,--number\t\tNumber of events to generate\n"
             << "\t-o,--output\t\tOutput root file (default: output.root)\n"
 	    << "\t-g,--gui\t\tGUI after the run\n"
