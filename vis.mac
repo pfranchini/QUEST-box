@@ -1,0 +1,33 @@
+/vis/open OGL	
+/vis/viewer/set/viewpointVector 0 1 1 
+/vis/drawVolume	
+
+/run/verbose 0
+
+# Refresh every event  
+#/vis/viewer/set/autoRefresh true
+# Trajectories
+/vis/scene/add/trajectories smooth
+
+# Transparent elements
+/vis/geometry/set/visibility logicWorld 0 false
+#/vis/geometry/set/visibility logicAir 0 false
+
+# Colours
+
+/vis/geometry/set/colour logicLhe3detector 1 blue
+
+# Events
+/vis/scene/endOfEventAction accumulate 10
+
+#/run/beamOn 100
+
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 1
+#/vis/modeling/trajectories/drawByParticleID-0/default/setLineColour cyan
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsColour blue
+
+
+
