@@ -42,15 +42,15 @@ void MyEventAction::EndOfEventAction(const G4Event*)
 
   // Fill the ntuple at the end of the Event
   // Loops over the tracks of this Event
-  for ( std::vector<int>::size_type i = 0; i < fPDG.size(); ++i) 
+  for ( std::vector<int>::size_type i = 0; i < fPDG.size(); ++i ) 
     if (fEdep[i] > 0.){
 
-      man->FillNtupleIColumn(0, 0, event);     // ntuple 0, colum 0: Event number
-      man->FillNtupleIColumn(0, 1, i);         // ntuple 0, colum 1: Track number
-      man->FillNtupleIColumn(0, 2, fPDG[i]);   // ntuple 0, colum 2: PDG ID
-      man->FillNtupleDColumn(0, 3, fEdep[i]);  // ntuple 0, colum 3: Energy deposition
-      man->FillNtupleDColumn(0, 4, fLength[i]);// ntuple 0, colum 4: Energy deposition
-      man->AddNtupleRow(0);                    // ntuple 0
+      man->FillNtupleIColumn(0, 0, event);      // ntuple 0, colum 0: Event number
+      man->FillNtupleIColumn(0, 1, i);          // ntuple 0, colum 1: Track number
+      man->FillNtupleIColumn(0, 2, fPDG[i]);    // ntuple 0, colum 2: PDG ID
+      man->FillNtupleDColumn(0, 3, fEdep[i]);   // ntuple 0, colum 3: Energy deposition
+      man->FillNtupleDColumn(0, 4, fLength[i]); // ntuple 0, colum 4: Energy deposition
+      man->AddNtupleRow(0);                     // ntuple 0
     
    }
 }

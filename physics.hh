@@ -4,6 +4,8 @@
 #include "G4VModularPhysicsList.hh"
 #include "G4EmStandardPhysics.hh"
 #include "G4EmLowEPPhysics.hh"
+#include "G4EmLivermorePhysics.hh"
+#include "G4EmPenelopePhysics.hh"
 
 #include "G4OpticalPhysics.hh"
 

@@ -72,7 +72,7 @@ int main(int argc, char** argv)
   }
 
   config.SetParticle(particle);
-  config.SetEnergy(energy*keV);
+  config.SetEnergy(energy*keV); // uses keV
   config.SetCharge(charge);
   config.SetVolume("phys"+volume);
   config.SetEvents(numberOfEvents);

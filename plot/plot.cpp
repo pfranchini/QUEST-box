@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
   TH2F *e = new TH2F("e","Edep vs Length",50, 0., 150., 100, 0., 2.);
   TH2F *gamma = new TH2F("gamma","Edep vs Length",50, 0., 50000., 100, 0., .003);
   TH2F *dedl = new TH2F("dedl","Edep/l vs Edep",50, 0., 2., 100, 0., 10.);
-  TH1F *E_e = new TH1F("E_e","Deposited energy - e",100, 0., 2.);
+  TH1F *E_e = new TH1F("E_e","Deposited energy - e",200, 0., 1.5);
   TH1F *E_gamma = new TH1F("E_gamma","Deposited energy - gamma",50, 0., .003);
 
   Double_t StoppingPower = 0;
