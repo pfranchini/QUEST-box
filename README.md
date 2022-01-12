@@ -7,8 +7,8 @@ Simulation of the LHe3 detector using Geant4, to study the energy deposition in 
  - Generators: a particle (`G4ParticleTable`) or a radioactive isotope (`G4IonTable`) from a defined list
  - Energy deposition in the LHe3 detector volume
 
- - Output: Root ntuple (`| Event number | Track number | PDG ID | Total energy deposition [MeV] | Track length [mm] |`)
-
+ - Output: Root ntuples (`| Event number | Track number | PDG ID | Total energy deposition [MeV] | Track length [mm] |`)
+[to be updated...]
  - Configuration from command line arguments
 
 ```
@@ -27,7 +27,7 @@ make
 Usage: ./sim <options>
 Options:
         -p,--particle           Name of the particle source <gamma|Ac228|Bi214|Co60|Cs137|K40|Mn54|Pb210|Pb212|Pb214|Ra226|Th234|Tl208|U235>
-        -e,--energy             Energy for a gamma source [MeV]
+        -e,--energy             Energy for a gamma source [keV]
         -n,--number             Number of events to generate
         -o,--output             Output root file (default: output.root)
         -g,--gui                GUI after the run

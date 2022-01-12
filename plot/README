@@ -1,0 +1,1 @@
+./steps -i ../build/output10MeV.root -o plot.png

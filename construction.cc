@@ -23,7 +23,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
   G4Material *liquidHe4 = new G4Material("liquidHe4", 2., 4., 0.125*g/cm3, kStateLiquid, 4*kelvin, 3.e-18*pascal);
   //  G4Material *liquidHe3 = new G4Material("liquidHe3", 2., 3., 0.100*g/cm3, kStateLiquid, 150E-6*kelvin, 3.e-18*pascal);
-  G4Material *liquidHe3 = new G4Material("liquidHe3", 2., 4., 0.100*g/cm3, kStateLiquid, 1*kelvin, 1.e-5*pascal);
+  G4Material *liquidHe3 = new G4Material("liquidHe3", 2., 4., 0.100*g/cm3); //, kStateLiquid, 1*kelvin, 1.e-5*pascal);
 
 
   // World

@@ -49,7 +49,7 @@ void MyEventAction::EndOfEventAction(const G4Event*)
       man->FillNtupleIColumn(0, 1, i);          // ntuple 0, colum 1: Track number
       man->FillNtupleIColumn(0, 2, fPDG[i]);    // ntuple 0, colum 2: PDG ID
       man->FillNtupleDColumn(0, 3, fEdep[i]);   // ntuple 0, colum 3: Energy deposition
-      man->FillNtupleDColumn(0, 4, fLength[i]); // ntuple 0, colum 4: Energy deposition
+      man->FillNtupleDColumn(0, 4, fLength[i]); // ntuple 0, colum 4: Total track length
       man->AddNtupleRow(0);                     // ntuple 0
     
    }

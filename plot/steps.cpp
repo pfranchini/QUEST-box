@@ -25,6 +25,12 @@ static void show_usage()
 
 int main(int argc, char** argv) {
 
+  ////////////////////////////
+
+  float maxE = 10;  // [MeV]
+
+  ////////////////////////////
+
   char* filename;
   char* output;
 
@@ -49,19 +55,20 @@ int main(int argc, char** argv) {
   TTree *t1 = (TTree*)f1->Get("Stepping");  // ntuple 2
 
   Int_t Track, PDG, Process;
-  Double_t Edep, Length;
+  Double_t Edep, Length, E;
 
   t1->SetBranchAddress("fTrack",&Track);
   t1->SetBranchAddress("fPDG",&PDG);
   t1->SetBranchAddress("fEdep",&Edep);
+  t1->SetBranchAddress("fE",&E);
   t1->SetBranchAddress("fLength",&Length);
   t1->SetBranchAddress("fProcess",&Process);
- 
-  TH2F *e = new TH2F("e","Edep vs Length",50, 0., 150., 100, 0., 2.);
-  TH2F *gamma = new TH2F("gamma","Edep vs Length",50, 0., 50000., 100, 0., .003);
-  TH2F *dedl = new TH2F("dedl","Edep/l vs Edep",50, 0., 2., 100, 0., 10.);
-  TH1F *E_e = new TH1F("E_e","Deposited energy - e",200, 0., 1.5);
-  TH1F *E_gamma = new TH1F("E_gamma","Deposited energy - gamma",50, 0., .003);
+
+  TH2F *dEdxvsE = new TH2F("dEdxvsE","dEdx vs Kinetic Energy",1000, 0., maxE, 100, 0.0001, 20.);
+  TH1F *dEdxvsE_histo = new TH1F("dEdxvsE_histo","dEdx vs Kinetic Energy",1000, 0., maxE);
+
+  TGraph* graph = new TGraph(dEdxvsE->GetNbinsX());
+  TGraph* graph_estar = new TGraph("/home/pfranchi/QUEST/QUEST-box/scripts/estar", "%lg %lg %*lg %*lg");
 
   Double_t StoppingPower = 0;
   Int_t count = 0;
@@ -71,46 +78,66 @@ int main(int argc, char** argv) {
   for (Long64_t i=0;i<nentries;i++) {
     t1->GetEntry(i);
 
-    if (PDG==11&&Length>0) e->Fill(Length,Edep);
-    if (PDG==11&&Length>0) E_e->Fill(Edep);
-    if (PDG==11&&Edep>0&&Length>0&&Process==3) {
-      dedl->Fill(Length,Edep/Length) ;
+    //if (PDG==11&&Edep>0&&Length>0&&Process==3) {
+    
+    // Select only primary electrons
+    if (Track==1&&PDG==11&&Edep>0&&Length>0) {
+      
+      dEdxvsE->Fill(E,100*Edep/Length);
+
       count++;
       StoppingPower = StoppingPower + Edep/Length;
     }
-    
-    if (PDG==22&&Length>0) gamma->Fill(Length,Edep);
-    if (PDG==22&&Length>0) E_gamma->Fill(Edep);
   }
   
-
   // Output
   std::cout << "Stopping power: " << StoppingPower/count << std::endl;
+
+  // Project to 1D histogram
+  for ( Int_t bin = 1; bin < dEdxvsE->GetNbinsX(); bin++ ){
+    TH1D *prof = dEdxvsE->ProjectionY("prof",bin,bin+1,"");
+    dEdxvsE_histo->SetBinContent(bin,prof->GetMean());
+    dEdxvsE_histo->SetBinError(  bin,prof->GetRMS()/sqrt(prof->GetEntries()));
+
+    graph->SetPoint(bin,bin*maxE/1000.,prof->GetMean());
+    //    std::cout << bin/100. << ": " << prof->GetMean() << std::endl;
+
+		    
+  }
+
+
+  // ESTAR
+
 
 
   // Plot
 
-  TCanvas *c1 = new TCanvas("c1","Radon",1600,900);
-  c1->Divide(3,2);
+  TCanvas *c1 = new TCanvas("c1","Radon",1400,600);
+  c1->Divide(2,1);
 
   c1->cd(1);
-  e->Draw("colz");
+  gPad->SetLogx();
+  dEdxvsE->Draw("colz");
+
+  /*  c1->cd(2);
+  gPad->SetLogx();
+  dEdxvsE_histo->Draw("E1");*/
 
   c1->cd(2);
-  gamma->Draw("colz");
+  gPad->SetLogx();
+  graph->SetMarkerColor(2);
+  graph->SetMarkerStyle(20);
+  graph->SetTitle("Mass stopping power");
+  graph->GetYaxis()->SetTitle("dE/#rhodX [MeVcm^{2}/g]");
+  graph->GetXaxis()->SetTitle("Kinetic energy [MeV]");
+  graph->Draw("AP");
 
-  c1->cd(3);
-  dedl->Draw("colz");
-
-  c1->cd(4);
-  E_e->Draw("colz");
-
-  c1->cd(5);
-  E_gamma->Draw("colz");
+  graph_estar->SetMarkerStyle(2);
+  graph_estar->Draw("Psame");
 
 
   c1->SaveAs(output);
-  //  system("display "+(std::string)output+"&");
+  //system("display "+(std::string)output+"&");
 
 
   

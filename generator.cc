@@ -72,7 +72,7 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 
   fParticleGun->SetParticlePosition(pos);
   fParticleGun->SetParticleMomentumDirection(mom);
-  fParticleGun->SetParticleEnergy(energy);
+  fParticleGun->SetParticleEnergy(energy);  // kinetic energy
   
   // Tells G4 to generate the primary vertex
   fParticleGun->GeneratePrimaryVertex(anEvent);
