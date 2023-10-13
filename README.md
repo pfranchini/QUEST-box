@@ -12,7 +12,7 @@ Simulation of the LHe3 detector using Geant4, to study the energy deposition in 
  - Configuration from command line arguments
 
 ```
-git clone git@github.com:<repository>/QUEST-detector-simulation
+git clone git@github.com:pfranchini/QUEST-box
 ```
 or to fetch changes
 ```
