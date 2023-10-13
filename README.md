@@ -42,3 +42,11 @@ generates 10 photons of 1.2 MeV from the centre of the box, stored in `output.ro
 ```
 generates 1000 events from the K-40 isotope coming from the centre of the box, stored in `output_Th234.root`.
 
+## Geant4 environment at RHUL (geant4 v10.7):
+
+```
+source /cvmfs/geant4.cern.ch/geant4/10.7/x86_64-centos7-gcc8-optdeb/bin/geant4.sh
+source /cvmfs/sft.cern.ch/lcg/contrib/gcc/8/x86_64-centos7/setup.sh
+source /cvmfs/sft.cern.ch/lcg/releases/LCG_100/qt5/5.12.4/x86_64-centos7-gcc9-opt/Qt5-env.sh
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.18.3/Linux-x86_64/bin/:${PATH}
+```
