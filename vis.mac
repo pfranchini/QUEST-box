@@ -15,7 +15,7 @@
 
 # Colours
 
-/vis/geometry/set/colour logicLhe3detector 1 blue
+/vis/geometry/set/colour logicBox 1 blue
 
 # Events
 /vis/scene/endOfEventAction accumulate 10

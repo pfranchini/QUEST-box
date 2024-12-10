@@ -5,6 +5,7 @@ MyRunAction::MyRunAction()
 {
   G4AnalysisManager *man = G4AnalysisManager::Instance();
 
+  // Total scoring for each track
   man->CreateNtuple("Scoring", "Scoring"); // ntuple 0 
   man->CreateNtupleIColumn("fEvent");      // Event number
   man->CreateNtupleIColumn("fTrack");      // Track number
@@ -13,6 +14,7 @@ MyRunAction::MyRunAction()
   man->CreateNtupleDColumn("fLength");     // Track length
   man->FinishNtuple(0);                    // ntuple 0
 
+  // Scoring in each step for each track
   man->CreateNtuple("Stepping", "Stepping"); // ntuple 1 
   man->CreateNtupleIColumn("fEvent");        // column 0: Event number
   man->CreateNtupleIColumn("fTrack");        // Track number

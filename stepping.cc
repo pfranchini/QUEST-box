@@ -77,10 +77,10 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
       if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "compt")    process = 0;
       if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "Rayl")     process = 1;
       if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "eBrem")    process = 2;
-      if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "eIoni")     process = 3;
+      if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "eIoni")    process = 3;
       if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "msc")      process = 4;
-      if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "ionIoni") process = 5;
-      man->FillNtupleIColumn(1, 6, process);  // ntuple 1, colum 5: Energy deposition process
+      if (step->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName() == "ionIoni")  process = 5;
+      man->FillNtupleIColumn(1, 6, process);  // ntuple 1, colum 6: Energy deposition process
     }
      
     man->AddNtupleRow(1);   
