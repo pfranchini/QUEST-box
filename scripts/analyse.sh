@@ -1,4 +1,6 @@
-
+# Analise the output of simulate.sh for a range of energies
+# Usage: ./analyse.sh
+# Output file: result
 
 where="/home/pfranchi/QUEST/QUEST-box/scripts/output"
 

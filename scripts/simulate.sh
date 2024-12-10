@@ -1,3 +1,5 @@
+# Run a set of simulation for electrons using a range of energies:
+# Usage: ./simulate.sh
 
 for energy in {1..1000..10}; do
     echo "Energy [keV]: $energy"
