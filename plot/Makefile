@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -DDEBUG -ggdb -Wall -std=c++11
+CFLAGS = -DDEBUG -ggdb -Wall -std=c++17
 
 all: plot steps
 
