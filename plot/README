@@ -1,1 +1,6 @@
-./steps -i ../build/output10MeV.root -o plot.png
+
+- Vanilla environment (do not source Geant4 dependencies)
+- make
+- Example:
+   ./steps -i ../build/output1MeV_Livermore.root -o plot1MeV_Livermore.png -m ../scripts/estar_STP; eog plot1MeV_Livermore.png
+
