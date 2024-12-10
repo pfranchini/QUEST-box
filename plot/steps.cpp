@@ -54,7 +54,8 @@ int main(int argc, char** argv) {
   char* model;
   float density; // [g/cm3]
 
-  // Parse the command line                                                                                                                                                
+  // Parse the command line
+
   std::string input;
   for (int i = 1; i < argc; ++i) {
     std::string arg = argv[i];

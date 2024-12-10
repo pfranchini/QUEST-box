@@ -23,14 +23,14 @@ public:
   MyDetectorConstruction();
   ~MyDetectorConstruction();
 
-  G4LogicalVolume *GetScoringVolume() const { return logicLhe3detector; }
+  G4LogicalVolume *GetScoringVolume() const { return logicBox; }
   
   virtual G4VPhysicalVolume *Construct();
 
 
 private:
 
-  G4LogicalVolume *logicLhe3detector;
+  G4LogicalVolume *logicBox;
   //  virtual void ConstructSDandField();  // Sensitive Detectors (and Field)
 
   

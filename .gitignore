@@ -6,4 +6,6 @@
 #*
 build/
 scripts/output
+scripts/result
+plot/plot
 plot/steps

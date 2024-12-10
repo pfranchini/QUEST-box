@@ -33,14 +33,49 @@ Options:
         -g,--gui                GUI after the run
 ```
 Examples:
+Generates 10000 electrons of 10 MeV from the centre of the box, stored in `he3_10MeV_Livermore.root`:
+```
+./sim -p electron -e 10000 -n 10000 -o he4_10MeV_Livermore.root
+```
+
+Generates 10 photons of 1.2 keV from the centre of the box, stored in `output.root` and visualized in the Geant4 UI:
 ```
 ./sim -p gamma -e 1.2 -n 10 -o output.root -g
 ```
-generates 10 photons of 1.2 MeV from the centre of the box, stored in `output.root` and visualized in the Geant4 UI.
+
+Generates 1000 events from the K-40 isotope coming from the centre of the box, stored in `output_Th234.root`:
 ```
 ./sim -p K40 -n 1000 -o output_Th234.root
 ```
-generates 1000 events from the K-40 isotope coming from the centre of the box, stored in `output_Th234.root`.
+
+## Plot
+```
+cd plot
+./steps -i ../build/he3_10MeV_Livermore.root -d 0.100 -o test.png -m ../scripts/estar_He3
+```
+
+## Simulation (legacy)
+
+Run a set of simulation for electrons using a range of energies
+```
+cd scripts
+./simulate.sh
+```
+output: `output/output_e[energy].root`
+```
+./analyse.sh
+```
+python plot.py
+
+
+## Geant4 environment via CVMFS for AlmaLinux 9.4 (geant4 v11.2):
+
+```
+source /cvmfs/sft.cern.ch/lcg/contrib/gcc/11/x86_64-el9-gcc11-opt/setup.sh
+source /cvmfs/geant4.cern.ch/geant4/11.2/x86_64-el9-gcc11-optdeb/bin/geant4.sh
+source /cvmfs/geant4.cern.ch/geant4/11.2/x86_64-el9-gcc11-optdeb-MT/CMake-setup.sh
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.18.3/Linux-x86_64/bin/:${PATH}
+```
 
 ## Geant4 environment at RHUL (geant4 v10.7):
 
