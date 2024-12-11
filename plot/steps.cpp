@@ -148,10 +148,14 @@ int main(int argc, char** argv) {
 
   c1->cd(1);
   gPad->SetLogx();
+  dEdxvsE->GetYaxis()->SetTitle("dE/dX [MeV/cm]");
+  dEdxvsE->GetXaxis()->SetTitle("Kinetic energy [MeV]");
   dEdxvsE->Draw("colz");
+
   dEdxvsE_histo->SetMarkerColor(0);
   dEdxvsE_histo->SetMarkerStyle(4);
   dEdxvsE_histo->Draw("histPsame");
+
   graph_estar->SetMarkerStyle(2);  //cross
   graph_estar->Draw("Psame");
 

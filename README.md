@@ -33,6 +33,7 @@ Options:
         -g,--gui                GUI after the run
 ```
 Examples:
+
 Generates 10000 electrons of 10 MeV from the centre of the box, stored in `he3_10MeV_Livermore.root`:
 ```
 ./sim -p electron -e 10000 -n 10000 -o he4_10MeV_Livermore.root
