@@ -1,14 +1,21 @@
 # Box of LHe3
 
 Simulation of the LHe3 detector using Geant4, to study the energy deposition in a larger volume, than the QUEST-DMC detector one.
+Can be used in general to study energy deposition in any other material, given a physics model.
+Code derived and simplified from https://github.com/QUEST-DMC/QUEST-detector-simulation.
 
- - Box filled with LHe3
+ - Box filled with LHe3 (or any other material)
  - Particle generator from the centre of the box
  - Generators: a particle (`G4ParticleTable`) or a radioactive isotope (`G4IonTable`) from a defined list
- - Energy deposition in the LHe3 detector volume
+ - Energy deposition in the box detector volume
+   
+ - Define the model in `physics.cc`
+ - Define the material in `construction.cc`
+   
+ - Output: ROOT ntuples with 2 TTree's, `Scoring` and `Stepping`, respectively:
+   - _Total scoring_: one entry for each track (`| Event number | Track number | PDG ID | Total energy deposition [MeV] | Global time [ns]`)
+   - _Steps scoring_: one entry for each step  (`| Event number | Track number | PDG ID | Track kinetic energy [MeV] | Step energy deposition [MeV] | Step length [mm] | Step global time [ns] | Energy deposition process (0..6) | Track is entering the detector [bool]`), where 0=Compton, 1=Rayleigh, 2=Bremsstrahlung, 3=ionization, 4=multiple scattering, 5=ions ionization, 6=transportation, 99=not defined.
 
- - Output: Root ntuples (`| Event number | Track number | PDG ID | Total energy deposition [MeV] | Track length [mm] |`)
-[to be updated...]
  - Configuration from command line arguments
 
 ```
@@ -36,7 +43,7 @@ Examples:
 
 Generates 10000 electrons of 10 MeV from the centre of the box, stored in `he3_10MeV_Livermore.root`:
 ```
-./sim -p electron -e 10000 -n 10000 -o he4_10MeV_Livermore.root
+./sim -p electron -e 10000 -n 10000 -o he3_10MeV_Livermore.root
 ```
 
 Generates 10 photons of 1.2 keV from the centre of the box, stored in `output.root` and visualized in the Geant4 UI:
@@ -49,11 +56,25 @@ Generates 1000 events from the K-40 isotope coming from the centre of the box, s
 ./sim -p K40 -n 1000 -o output_Th234.root
 ```
 
-## Plot
+## Model comparison
+Used to compare the models in ESTAR and ASTAR databases https://www.nist.gov/pml/stopping-power-range-tables-electrons-protons-and-helium-ions.
+
+Example: compares the mass stopping power for electrons produced in the example above with a model from ESTAR (crosses)
 ```
 cd plot
-./steps -i ../build/he3_10MeV_Livermore.root -d 0.100 -o test.png -m ../scripts/estar_He3
+make
+./steps --help
+Options:
+        -i,--input              Input ROOT file
+        -o,--output             Output image
+        -m,--model              Model ascii file
+        -d,--density            Density [g/cm3]
 ```
+```
+./steps -i ../build/he3_10MeV_Livermore.root -d 0.100 -o test.png -m ../models/estar_He3.dat
+```
+![image](https://github.com/user-attachments/assets/d656c14b-8fc6-4823-b241-0606885760e3)
+
 
 ## Simulation (legacy)
 
