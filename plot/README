@@ -1,6 +1,17 @@
 
-- Vanilla environment (do not source Geant4 dependencies)
-- make
-- Examples:
+Use a vanilla environment (do not source Geant4 dependencies)
+
+```
+make
+[plot]$ ./steps --help
+Usage: ./sim <options>
+Options:
+        -i,--input              Input ROOT file
+        -o,--output             Output image
+        -m,--model              Model ascii file
+        -d,--density            Density [g/cm3]
+```
+
+Examples:
    ./steps -i ../build/output1MeV_Livermore.root -o plot1MeV_Livermore.png -m ../scripts/estar_STP; eog plot1MeV_Livermore.png
    ./steps -i ../build/he4_10MeV_Livermore.root -d 0.1 -o plothe4_10MeV_Livermore.png -m ../scripts/estar_He3; eog plothe4_10MeV_Livermore.png
